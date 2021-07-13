@@ -8,7 +8,7 @@
 
 - Linux-based OS
 - g++ compiler
-- ncurses library installed [install ncurses] (https://ostechnix.com/how-to-install-ncurses-library-in-linux/)
+- ncurses library installed [install ncurses](https://ostechnix.com/how-to-install-ncurses-library-in-linux/)
 
 ## Compile
 
