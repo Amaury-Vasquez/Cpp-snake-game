@@ -1,5 +1,5 @@
 <h3> Snake Game created in C++ usign ncurses </h3>
-<h4> Requirements </h4>'
+<h4> Requirements </h4>
 <ul> 
   <li> Linux-based OS </li>
   <li> 
