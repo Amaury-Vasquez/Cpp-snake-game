@@ -1,5 +1,11 @@
-<h3> Snake Game created in C++ usign ncurses </h3>
-<h4> Requirements </h4>
+<p align="center">
+  <img src="https://pbs.twimg.com/media/EwEWFOGWEAswp9y.png" width="320" alt="C++ Logo" />
+</p>
+
+# Snake Game created in C++
+
+## Requirements
+
 <ul> 
   <li> Linux-based OS </li>
   <li> 
@@ -12,7 +18,15 @@
     </a>
   </li>
 </ul>
-<h4> Compile </h4>
-<p> g++ main.cpp snake.cpp food.cpp -o main -lncurses <p>
-<h4> Usage </h4>
-<p> ./main </p>
+
+## Compile
+
+```bash
+g++ main.cpp game.cpp snake.cpp food.cpp -o main -lncurses
+```
+
+## Usage
+
+```bash
+./main
+```
