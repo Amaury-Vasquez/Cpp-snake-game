@@ -39,8 +39,10 @@ void Game::set_food(Food food) {
 
 void Game::draw() {
   std::vector<COORD> body = this->snake.get_body();
-  for(int i = 0; i < body.size(); i++)
-    board[body[i].y][body[i].x] = '@';
+  int i;
+  for(i = 0; i < body.size() - 1; i++)
+    board[body[i].y][body[i].x] = '-';
+  board[body[i].y][body[i].x] = '@';
   const COORD p = food.get_p();
   board[p.y][p.x] = '0';
   erase();
