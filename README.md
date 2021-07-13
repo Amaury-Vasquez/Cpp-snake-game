@@ -13,7 +13,7 @@
   </li>
   <li> 
     ncurses library installed
-    <a href="https://ostechnix.com/how-to-install-ncurses-library-in-linux/">
+    <a href="https://ostechnix.com/how-to-install-ncurses-library-in-linux/" target="_blank">
       install ncurses 
     </a>
   </li>
