@@ -5,7 +5,7 @@
 
 Game::Game(): snake(COLUMNS / 2, ROWS / 2, COLUMNS, ROWS), food(board) {
   this->init_board();
-  this->init_game();
+  this->init_window();
   this->game_end = false;
 }
 
@@ -20,7 +20,7 @@ void Game::init_board() {
   }
 }
 
-void Game::init_game() {
+void Game::init_window() {
   // Initialize window
   WINDOW *win = initscr();
   erase();
@@ -37,12 +37,6 @@ void Game::set_food(Food food) {
   this->food = food;
 }
 
-void Game::clean_board() {
-  std::vector<COORD> body = this->snake.get_body();
-  for(int i = 0; i < body.size(); i++) 
-    board[body[i].y][body[i].x] = ' ';
-}
-
 void Game::draw() {
   std::vector<COORD> body = this->snake.get_body();
   for(int i = 0; i < body.size(); i++)
@@ -55,9 +49,7 @@ void Game::draw() {
 }
 
 void Game::moveSnake(int input) {
-  std::vector<COORD> tmp;
-  clean_board();
-  this->snake.move_snake();
+  update_board();
   switch (input) {
     case KEY_DOWN:
       this->snake.set_dir('d');
@@ -77,22 +69,15 @@ void Game::moveSnake(int input) {
     default:
       break;
   }
+
   if(this->snake.collided())
     this->game_end = true;
+
   COORD food = this->food.get_p(), head = this->snake.get_head();
   if(food.x == head.x && food.y == head.y) {
     this->snake.eat();
     Food tmp(board);
     set_food(tmp);
-  }
-}
-
-void Game::print_board() {
-  for(int i = 0; i < ROWS; i++) {
-    printw("\t\t");
-    for(int j = 0; j < COLUMNS; j++)
-      printw("%c", this->board[i][j]);
-    printw("\n");
   }
 }
 
@@ -106,4 +91,26 @@ void Game::play() {
     napms(200);
   } while(!this->game_end);
   endwin();
+}
+
+void Game::print_board() {
+  for(int i = 0; i < ROWS; i++) {
+    printw("\t\t");
+    for(int j = 0; j < COLUMNS; j++)
+      printw("%c", this->board[i][j]);
+    printw("\n");
+  }
+}
+
+void Game::update_board() {
+  std::vector<COORD> body = this->snake.get_body();
+  int i;
+  for(i = 0; i < body.size() - 1; i++) {  
+    board[body[i].y][body[i].x] = ' ';
+    body[i] = body[i + 1];
+  }
+  COORD head = this->snake.next_square();
+  body[i] = head;
+  this->snake.set_body(body);
+  this->snake.set_head(head);
 }

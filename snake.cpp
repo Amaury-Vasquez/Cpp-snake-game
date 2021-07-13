@@ -7,6 +7,7 @@ Snake::Snake(int x, int y, int max_x, int max_y) {
   
   for(tmp.x = head_x - 2; tmp.x <= head_x; tmp.x++)
     body.push_back(tmp);
+
   this->dir = 'r';
   this->body = body;
   tmp.x--;
@@ -47,7 +48,7 @@ int Snake::forward(int value, int limit) const {
   return value + 1 < limit - 1? value + 1 : 1;
 }
 
-bool Snake::collided() {
+bool Snake::collided() const {
   for(int i = 0; i < body.size() - 1; i++) {
     if(head.x == body[i].x && head.y == body[i].y)
       return true;
@@ -61,7 +62,7 @@ void Snake::eat() {
   this->head = head;
 }
 
-COORD Snake::next_square() {
+COORD Snake::next_square() const {
   COORD head = this->head;
   switch (dir) {
     case 'd':
@@ -82,12 +83,4 @@ COORD Snake::next_square() {
   return head;
 }
 
-void Snake::move_snake() {
-  COORD head = next_square();
-  int i;
-  for(i = 0; i < body.size() - 1; i++)
-    body[i] = body[i + 1];
-  body[i] = head;
-  this->head = head;
-}
 

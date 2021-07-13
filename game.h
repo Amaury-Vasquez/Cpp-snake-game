@@ -17,16 +17,19 @@ class Game {
 
   public:
     Game();
+    
     // member initializers
     void init_board();
-    void init_game();
+    void init_window();
+    
     // Setters
     void set_food(Food);
+    
     // methods
-    void clean_board();
     void draw();
     void moveSnake(int);
     void play();
     void print_board();
+    void update_board();
 };
 #endif
