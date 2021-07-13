@@ -1,8 +1,8 @@
+# Snake Game created in C++
+
 <p align="center">
   <img src="https://pbs.twimg.com/media/EwEWFOGWEAswp9y.png" width="320" alt="C++ Logo" />
 </p>
-
-# Snake Game created in C++
 
 ## Requirements
 
