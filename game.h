@@ -1,15 +1,16 @@
 #ifndef GAME_H
 #define GAME_H
-#define COLUMNS 60
-#define ROWS 20
+
 
 #include <ncurses.h>
+#include "food.h"
+#include "globals.h"
 #include "snake.h"
-
 
 class Game {
   private:
     int board[ROWS][COLUMNS];
+    Food food;
     bool game_end;
     Snake snake;
     WINDOW *win;
@@ -19,9 +20,13 @@ class Game {
     // member initializers
     void init_board();
     void init_game();
+    // Setters
+    void set_food(Food);
     // methods
-    void drawSnake();
+    void clean_board();
+    void draw();
     void moveSnake(int);
+    void play();
     void print_board();
 };
 #endif

@@ -2,26 +2,32 @@
 #define SNAKE_H
 
 #include <vector>
-
-struct COORD{
-  int x, y;
-};
+#include "coord.h"
 
 class Snake {  
   private:
     std::vector<COORD> body;
+    int dir, max_x, max_y;
     COORD head;
-  
+
   public:
-    //Constructor. Receives x and y, initializes snake vector with head in (x, y)
-    Snake(int, int);
+    //Constructor. Receives x, y, max_x and max_y, initializes snake vector with head in (x, y)
+    Snake(int, int, int, int);
     // Getters
-    std::vector<COORD> get_body();
-    COORD get_head();
-    // // Setters
-    // void set_body(std::vector<COORD>);
-    // void set_head(COORD);
-  
+    std::vector<COORD> get_body() const;
+    int get_dir() const;
+    COORD get_head() const;
+    // Setters
+    void set_body(std::vector<COORD>);
+    void set_dir(int);
+    void set_head(COORD);
+    // Methods
+    int backward(int, int) const;
+    int forward(int, int) const;
+    bool collided();
+    void eat();
+    COORD next_square();
+    void move_snake();
 };
 
 #endif
