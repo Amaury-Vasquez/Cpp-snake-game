@@ -6,14 +6,13 @@
 
 ## Requirements
 
-  <p> Linux-based OS <br> 
-    g++ compiler <br>
-    ncurses library installed
-    <a href="https://ostechnix.com/how-to-install-ncurses-library-in-linux/">
-      how to install ncurses in linux 
-    </a>
-  </p>
-  
+`Linux-based OS`
+`g++ compiler`
+`ncurses library installed`
+<a href="https://ostechnix.com/how-to-install-ncurses-library-in-linux/">
+how to install ncurses in linux
+</a>
+
 ## Compile
 
 ```bash
