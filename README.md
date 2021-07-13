@@ -1,7 +1,7 @@
 # Snake Game created in C++
 
 <p align="center">
-  <img src="https://pbs.twimg.com/media/EwEWFOGWEAswp9y.png" width="320" alt="C++ Logo" />
+  <img src="https://i.imgur.com/bzE8Lcg.png" width="320" alt="C++ snake" />
 </p>
 
 ## Requirements
