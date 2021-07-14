@@ -9,7 +9,7 @@
 
 class Game {
   private:
-    int board[ROWS][COLUMNS];
+    int board[ROWS][COLUMNS], score;
     Food food;
     bool game_end;
     Snake snake;
@@ -27,9 +27,11 @@ class Game {
     
     // methods
     void draw();
+    void gameOver();
     void moveSnake(int);
     void play();
-    void print_board();
+    void print_board() const;
+    void print_score() const;
     void update_board();
 };
 #endif
