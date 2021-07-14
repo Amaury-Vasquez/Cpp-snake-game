@@ -60,22 +60,14 @@ void Snake::eat() {
 
 COORD Snake::next_square() const {
   COORD head = this->head;
-  switch (dir) {
-    case 'd':
-      head.y++;
-      break;
-    case 'l':
-      head.x--;
-      break;
-    case 'r':
-      head.x++;
-      break;
-    case 'u':
-      head.y--;
-      break;
-    default:
-      break;
-  }
+  if(dir == 'd')
+    head.y++;
+  else if(dir == 'l')
+    head.x--;
+  else if(dir == 'r')
+    head.x++;
+  else if(dir == 'u')
+    head.y--;
   return head;
 }
 
