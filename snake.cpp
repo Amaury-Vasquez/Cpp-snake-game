@@ -40,16 +40,12 @@ void Snake::set_head(COORD head) {
   this->head = head;
 }
 
-int Snake::backward(int value, int limit) const {
-  return value - 1 > 0? value - 1 : limit - 2;
-}
-
-int Snake::forward(int value, int limit) const {
-  return value + 1 < limit - 1? value + 1 : 1;
-}
-
-bool Snake::collided() const {
+bool Snake::collided(COORD food) const {
+  if(head.x == 0 || head.x == max_x - 1 || head.y == 0 || head.y == max_y - 1)
+    return true;
   for(int i = 0; i < body.size() - 1; i++) {
+    if(food.x == body[i].x && food.y == body[i].y)
+      return true;
     if(head.x == body[i].x && head.y == body[i].y)
       return true;
   }
@@ -66,16 +62,16 @@ COORD Snake::next_square() const {
   COORD head = this->head;
   switch (dir) {
     case 'd':
-      head.y = forward(head.y, max_y);
+      head.y++;
       break;
     case 'l':
-      head.x = backward(head.x, max_x);
+      head.x--;
       break;
     case 'r':
-      head.x = forward(head.x, max_x);
+      head.x++;
       break;
     case 'u':
-      head.y = backward(head.y, max_y);
+      head.y--;
       break;
     default:
       break;

@@ -25,9 +25,7 @@ class Snake {
     void set_head(COORD);
     
     // Methods
-    int backward(int, int) const;
-    int forward(int, int) const;
-    bool collided() const;
+    bool collided(COORD) const;
     void eat();
     COORD next_square() const;
 };
