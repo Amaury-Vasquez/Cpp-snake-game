@@ -1,8 +1,9 @@
 # Snake Game created in C++
 
-<p align="center">
-  <img src="https://i.imgur.com/bzE8Lcg.png" width="320" alt="C++ snake" />
-</p>
+<div>
+  <img src="https://i.imgur.com/Dy9LARW.png" width="320" alt="C++ snake" />
+  <img src="https://i.imgur.com/KvTs1Z1.png" width="320" alt="C++ snake" />
+</div>
 
 ## Requirements
 
