@@ -2,7 +2,7 @@
 
 <div>
   <img src="https://i.imgur.com/Dy9LARW.png" width="320" alt="C++ snake" />
-  <img src="https://i.imgur.com/KvTs1Z1.png" width="320" alt="C++ snake" />
+  <img src="https://i.imgur.com/5A5oD7B.png" width="320" alt="C++ snake" />
 </div>
 
 ## Requirements
