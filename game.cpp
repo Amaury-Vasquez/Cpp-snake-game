@@ -39,7 +39,7 @@ void Game::set_food(Food food) {
 }
 
 void Game::draw() {
-  std::vector<COORD> body = this->snake.get_body();
+  std::vector<COORD> body = snake.get_body();
   int i;
   for(i = 0; i < body.size() - 1; i++)
     board[body[i].y][body[i].x] = '*';
@@ -76,20 +76,20 @@ void Game::moveSnake(int input) {
   update_board();
   switch (input) {
     case KEY_DOWN:
-      if(this->snake.get_dir() != 'u')
-        this->snake.set_dir('d');
+      if(snake.get_dir() != 'u')
+        snake.set_dir('d');
       break;
     case KEY_LEFT:
-      if(this->snake.get_dir() != 'r')
-        this->snake.set_dir('l');
+      if(snake.get_dir() != 'r')
+        snake.set_dir('l');
       break;
     case KEY_RIGHT:
-      if(this->snake.get_dir() != 'l')
-        this->snake.set_dir('r');
+      if(snake.get_dir() != 'l')
+        snake.set_dir('r');
       break;
     case KEY_UP:
-      if(this->snake.get_dir() != 'd')
-        this->snake.set_dir('u');
+      if(snake.get_dir() != 'd')
+        snake.set_dir('u');
       break;
     case KEY_BACKSPACE:
       gameOver();
@@ -98,13 +98,13 @@ void Game::moveSnake(int input) {
       break;
   }
 
-  if(this->snake.collided(food.get_p()))
+  if(snake.collided(food.get_p()))
     gameOver();
 
-  COORD food = this->food.get_p(), head = this->snake.get_head();
+  COORD food = this->food.get_p(), head = snake.get_head();
   if(food.x == head.x && food.y == head.y) {
     this->score++;
-    this->snake.eat();
+    snake.eat();
     Food tmp(board);
     set_food(tmp);
   }
@@ -115,12 +115,12 @@ void Game::play() {
   int input;
   do {
     input = getch();
-    this->moveSnake(input);
-    this->draw();
+    moveSnake(input);
+    draw();
     napms(200 - score * 10);
-    if(this->score == 20) 
+    if(score == 20) 
       gameOver();
-  } while(!this->game_end);
+  } while(!game_end);
   endwin();
 }
 
@@ -128,24 +128,24 @@ void Game::print_board() const {
   for(int i = 0; i < ROWS; i++) {
     printw("\t\t");
     for(int j = 0; j < COLUMNS; j++)
-      printw("%c", this->board[i][j]);
+      printw("%c", board[i][j]);
     printw("\n");
   }
 }
 
 void Game::print_score() const {
-  printw("\t\t\tScore:  %d", this->score * 10);
+  printw("\t\t\tScore:  %d", score * 10);
 }
 
 void Game::update_board() {
-  std::vector<COORD> body = this->snake.get_body();
+  std::vector<COORD> body = snake.get_body();
   int i;
   for(i = 0; i < body.size() - 1; i++) {  
     board[body[i].y][body[i].x] = ' ';
     body[i] = body[i + 1];
   }
-  COORD head = this->snake.next_square();
+  COORD head = snake.next_square();
   body[i] = head;
-  this->snake.set_body(body);
-  this->snake.set_head(head);
+  snake.set_body(body);
+  snake.set_head(head);
 }
