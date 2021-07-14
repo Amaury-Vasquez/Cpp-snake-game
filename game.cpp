@@ -99,7 +99,7 @@ void Game::moveSnake(int input) {
   }
 
   if(this->snake.collided(food.get_p()))
-    this->game_end = true;
+    gameOver();
 
   COORD food = this->food.get_p(), head = this->snake.get_head();
   if(food.x == head.x && food.y == head.y) {
