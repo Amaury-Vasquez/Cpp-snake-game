@@ -1,7 +1,7 @@
 #ifndef COORD_H
 #define COORD_H
 
-struct COORD{
+struct COORD {
   int x, y;
 };
 
