@@ -15,10 +15,9 @@ Player Player::operator= (const Player &player) {
   return tmp;
 }
 
-bool Player::operator< (const Player b) {
-  std::cout << b.get_score();
-  // if(this->get_score() < b.get_score())
-  //   return true;
+bool Player::operator< (const Player &b) {
+  if(this->get_score() < b.get_score())
+    return true;
   return false;
 }
 

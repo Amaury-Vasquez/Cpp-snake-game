@@ -5,7 +5,6 @@
 #include <string>
 
 class Player {
-   
   private:
     const std::string name;
     const int score;
@@ -15,7 +14,7 @@ class Player {
     const std::string get_name() const;
     const int get_score() const;
     Player operator= (const Player&);
-    bool operator< (const Player);
+    bool operator< (const Player&);
 };
 
 std::ostream& operator<<(std::ostream &output, const Player &);
