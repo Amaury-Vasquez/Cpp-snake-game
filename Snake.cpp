@@ -1,4 +1,4 @@
-#include "snake.h"
+#include "Snake.h"
 
 Snake::Snake(int x, int y, int max_x, int max_y) {
   COORD tmp = {x, y};
