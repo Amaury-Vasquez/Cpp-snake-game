@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "food.h"
+#include "Food.h"
 
 Food::Food(int board[ROWS][COLUMNS]) {
   COORD rand;

@@ -3,9 +3,9 @@
 
 
 #include <ncurses.h>
-#include "food.h"
+#include "Food.h"
 #include "globals.h"
-#include "snake.h"
+#include "Snake.h"
 
 class Game {
   private:

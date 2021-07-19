@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <ctime>
 
-#include "game.h"
+#include "Game.h"
 
 Game::Game(): snake(COLUMNS / 2, ROWS / 2, COLUMNS, ROWS), food(board) {
   this->init_board();
