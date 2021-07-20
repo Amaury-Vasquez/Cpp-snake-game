@@ -14,7 +14,7 @@
 ## Compile
 
 ```bash
-g++ main.cpp game.cpp snake.cpp food.cpp -o main -lncurses
+g++ main.cpp Game.cpp Snake.cpp Food.cpp -o main -lncurses
 ```
 
 ## Usage
