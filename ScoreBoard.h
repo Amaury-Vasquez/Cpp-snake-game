@@ -8,18 +8,19 @@
 
 #include "Player.h"
 
+#define MAX_LEN 15
+
 class ScoreBoard {
   private: 
-    std::vector<Player> top_players;
+    Player top_players[MAX_LEN];
     const std::string filename = ".score";
-    const int max_len = 20;
-    // std::ofstream score_output;
-    
+    int len;
+
   public:
     ScoreBoard();
     ~ScoreBoard();
-    std::vector<Player> get_top_players() const;
-    void add_top_player(Player);
+    bool add_top_player(Player);
+    int is_top_score(Player) const;
     void print_players() const;
     void read_top_players();
     void save_players() const;

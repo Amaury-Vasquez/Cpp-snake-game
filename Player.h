@@ -10,11 +10,12 @@ class Player {
     const int score;
 
   public:
+    Player();
     Player(std::string, int);
     const std::string get_name() const;
     const int get_score() const;
     Player operator= (const Player&);
-    bool operator< (const Player&);
+    bool operator< (const Player&) const;
 };
 
 std::ostream& operator<<(std::ostream &output, const Player &);

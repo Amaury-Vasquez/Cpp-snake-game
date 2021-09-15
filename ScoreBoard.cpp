@@ -1,34 +1,47 @@
 #include <iostream>
 #include <fstream>
-#include <bits/stdc++.h>
-using namespace std;
+
 #include "Player.h"
 #include "ScoreBoard.h"
 
 ScoreBoard::ScoreBoard() {
+  this->len = 0;
   read_top_players();
 }
 
 ScoreBoard::~ScoreBoard() {
-  save_players();
+  // save_players();
 }
 
-std::vector<Player> ScoreBoard::get_top_players() const {
-  return this->top_players;
+bool ScoreBoard::add_top_player(Player player) {
+  int i = is_top_score(player);
+  if(i >= 0) {
+    if(len < MAX_LEN) 
+      this->len++;
+    Player tmp = player;
+    while(i < len) {
+      std::cout << tmp;
+      Player aux = top_players[i];
+      this->top_players[i++] = tmp;
+      tmp = aux;
+    }
+    return true;
+  }
+  return false;
 }
 
-void ScoreBoard::add_top_player(Player player) {
-  Player a("gg", 180);
-  print_players();
-  this->top_players.at(0) = a;
-  std::cout << std::endl;
-  print_players();
-
-  // top_players.push_back(player);
+// Returns top score index. If is not top score then returns -1
+int ScoreBoard::is_top_score(Player player) const {
+  int i;
+  for(i = 0; i < len && player < top_players[i]; i++) {
+    if(i + 1 < len && top_players[i + 1] < player)
+      return i + 1;
+  }
+  return i < MAX_LEN? i : -1;
 }
 
 void ScoreBoard::print_players() const {
-  for(int i = 0; i < top_players.size(); i++)
+  for(int i = 0; i < len; i++)
     std::cout << top_players[i];
 }
 
@@ -39,14 +52,13 @@ void ScoreBoard::read_top_players() {
 
   while(score_input.is_open() && score_input >> name >> score) {
     Player tmp(name, score);
-    top_players.push_back(tmp);
-  } 
-  // sort();
+    add_top_player(tmp);
+  }
 }
 
 void ScoreBoard::save_players() const {
   std::ofstream score_file(filename, std::ofstream::out | std::ofstream::trunc);
-  for(int i = 0; i < top_players.size(); i++)
+  for(int i = 0; i < len; i++)
     score_file << top_players[i];
 }
 

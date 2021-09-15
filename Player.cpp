@@ -1,5 +1,7 @@
 #include "Player.h"
 
+Player::Player(): score(0), name("") {}
+
 Player::Player(std::string name, int score) : name(name), score(score) {}
 
 const std::string Player::get_name() const {
@@ -15,7 +17,7 @@ Player Player::operator= (const Player &player) {
   return tmp;
 }
 
-bool Player::operator< (const Player &b) {
+bool Player::operator< (const Player &b) const {
   if(this->get_score() < b.get_score())
     return true;
   return false;
